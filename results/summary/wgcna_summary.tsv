@@ -1,0 +1,13 @@
+
+item	value
+n_samples_input	25
+n_PBS	9
+n_LPS_1x	9
+n_LPS_4x	7
+outlier_cutHeight	40000
+minModuleSize	50
+deepSplit	2
+pamRespectsDendro	FALSE
+MEDissThres	0.90
+powers_tested	1:15
+softPower_used	NA
