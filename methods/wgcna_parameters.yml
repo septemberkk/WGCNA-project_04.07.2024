@@ -1,0 +1,40 @@
+
+project: WGCNA snapshot
+design:
+  groups:
+    - PBS
+    - LPS_1x
+    - LPS_4x
+  n_samples_input: 25
+  n_PBS: 9
+  n_LPS_1x: 9
+  n_LPS_4x: 7
+
+input_matrix:
+  file: counts.txt
+  note: "gene x sample numeric matrix"
+
+preprocessing:
+  goodSamplesGenes: true
+  low_expression_filter:
+    mean_threshold: 0
+  outlier_removal:
+    method: cutreeStatic
+    cutHeight: 40000
+    minSize: 10
+
+wgcna:
+  enableThreads: true
+  powers_tested: "1:15"
+  scale_free_R2_target: 0.90
+  softPower: NA   # fill with sft$powerEstimate used in your run
+  network:
+    adjacency_function: adjacency(datExpr0, power=softPower)
+    TOMsimilarity: true
+  module_detection:
+    deepSplit: 2
+    pamRespectsDendro: false
+    minModuleSize: 50
+  module_merging:
+    MEDissThres: 0.90
+
